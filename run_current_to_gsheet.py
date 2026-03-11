@@ -262,8 +262,8 @@ def main():
         msg_lines.extend([
             f"\n*✅ {display_name(target)}*",
             f"• 현재 매출 {s['revenue']:,} / {s['purchases']:,}",
-            f"• ROAS {s['roas']:,.2f} / CPA {s['cpa']:,.0f}",
             f"• 메타 광고비: {s['spend']:,.0f}",
+            f"• ROAS {s['roas']:,.2f} / CPA {s['cpa']:,.0f}",
         ])
     slack_post("\n".join(msg_lines))
     print("[SLACK OK] sent")
