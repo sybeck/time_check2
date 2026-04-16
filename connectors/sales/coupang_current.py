@@ -110,6 +110,11 @@ def login_coupang(page) -> None:
     user = must_env("COUPANG_ID")
     pw = must_env("COUPANG_PW")
     page.goto(login_url, wait_until="domcontentloaded")
+    try:
+        page.wait_for_load_state("networkidle", timeout=15_000)
+    except Exception:
+        pass
+    time.sleep(int(os.getenv("PRE_LOGIN_WAIT_MS", "5000")) / 1000)
     scopes = [page] + list(page.frames)
     submitted = False
     for scope in scopes:
